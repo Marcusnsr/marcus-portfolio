@@ -1,0 +1,155 @@
+.about__prose {
+  max-width: 880px;
+  margin: 0 auto;
+  font-size: 1.08rem;
+  color: var(--text-dim);
+  /* establishes a block formatting context so floats stay contained */
+  overflow: hidden;
+}
+.about__prose p {
+  margin-bottom: 1.3rem;
+}
+.about__lead::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  line-height: 0.78;
+  float: left;
+  margin: 0.3rem 0.65rem 0 0;
+  color: var(--gold);
+}
+
+/* Scrapbook photos that the text flows around. Each clears the previous one
+   so it always pairs with a single block of text (alternating zigzag). */
+.about__photo {
+  margin: 0;
+  background: #f6efe0;
+  padding: 0.55rem 0.55rem 0.45rem;
+  border-radius: 6px;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  width: 44%;
+}
+.about__photo img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+  aspect-ratio: 4 / 3;
+}
+.about__photo figcaption {
+  font-family: var(--font-display);
+  font-size: 0.84rem;
+  text-align: center;
+  color: #4a3a23;
+  padding-top: 0.45rem;
+  letter-spacing: 0.02em;
+}
+
+.about__photo--right {
+  float: right;
+  clear: both;
+  margin: 0.2rem 0 1.1rem 1.8rem;
+  transform: rotate(1.6deg);
+}
+.about__photo--left {
+  float: left;
+  clear: both;
+  margin: 0.2rem 1.8rem 1.1rem 0;
+  transform: rotate(-1.8deg);
+}
+
+/* Character sheet banner */
+.charsheet {
+  margin-bottom: 2.6rem;
+  background: linear-gradient(160deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  box-shadow: inset 0 0 50px rgba(124, 58, 237, 0.08);
+}
+.charsheet__head {
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1rem;
+  margin-bottom: 1.4rem;
+}
+.charsheet__class {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--arcane-soft);
+}
+.charsheet__head h3 {
+  font-size: 1.5rem;
+  color: var(--gold-soft);
+  margin-top: 0.3rem;
+}
+.charsheet__lvl {
+  color: var(--ember);
+}
+.charsheet__stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.9rem;
+}
+.charsheet__stat {
+  position: relative;
+  background: var(--bg-deep);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.9rem 0.6rem 0.7rem;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.charsheet__stat:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+}
+.charsheet__abbr {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+.charsheet__score {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  color: var(--text);
+  line-height: 1.1;
+}
+.charsheet__mod {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--arcane-soft);
+}
+.charsheet__label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 900px) {
+  .charsheet__stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .about__photo--0,
+  .about__photo--1,
+  .about__photo--2,
+  .about__photo--3 {
+    float: none;
+    width: 78%;
+    margin: 1rem auto;
+    display: block;
+  }
+  .charsheet__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

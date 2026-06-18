@@ -1,0 +1,41 @@
+.medallion {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.medallion__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 2px;
+  background: conic-gradient(from 0deg, var(--gold), var(--arcane), var(--gold));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.25);
+}
+
+.medallion__inner {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  /* Light "parchment coin" so every logo reads, regardless of its own colour. */
+  background: radial-gradient(circle at 38% 32%, #fbf6ea, #e7d9bd);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  box-shadow: inset 0 0 12px rgba(90, 60, 20, 0.25);
+}
+
+.medallion__inner img {
+  width: auto;
+  height: auto;
+  /* Wide wordmarks get more width; square seals are capped in height, so every
+     logo reads at a comparable visual size on the chip. */
+  max-width: 84%;
+  max-height: 62%;
+  object-fit: contain;
+}

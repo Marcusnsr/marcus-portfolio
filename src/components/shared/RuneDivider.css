@@ -1,0 +1,27 @@
+.rune-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  max-width: 480px;
+  margin: 0 auto;
+  color: var(--gold);
+  opacity: 0.55;
+}
+
+.rune-divider__line {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.rune-divider__glyph {
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
+  animation: rune-spin 18s linear infinite;
+}
+
+@keyframes rune-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

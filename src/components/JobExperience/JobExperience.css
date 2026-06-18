@@ -1,0 +1,93 @@
+.jobs {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
+  align-items: start;
+}
+
+/* Connector line threading the medallions */
+.jobs__line {
+  position: absolute;
+  top: 46px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--arcane), var(--gold));
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.jobs__bubble {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.jobs__card {
+  margin-top: 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.1rem 1rem 1.3rem;
+  width: 100%;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.jobs__bubble:hover .jobs__card {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.jobs__period {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  display: block;
+  margin-bottom: 0.5rem;
+  white-space: pre-line; /* honour the line break in multi-period roles */
+}
+.jobs__card h3 {
+  font-size: 1rem;
+  color: var(--gold-soft);
+  margin-bottom: 0.3rem;
+}
+.jobs__company {
+  font-size: 0.85rem;
+  color: var(--arcane-soft);
+  margin-bottom: 0.6rem;
+}
+.jobs__desc {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .jobs {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .jobs__line {
+    top: 0;
+    bottom: 0;
+    left: 45px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, var(--gold), var(--arcane), var(--gold));
+  }
+  .jobs__bubble {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.2rem;
+    padding-bottom: 1.6rem;
+  }
+  .jobs__card {
+    margin-top: 0;
+  }
+}

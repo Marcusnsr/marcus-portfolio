@@ -1,0 +1,68 @@
+.summon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.summon__svg {
+  /* Stay within the viewport so the circle is never cropped. */
+  width: min(82vh, 92vw);
+  height: min(82vh, 92vw);
+  max-width: 780px;
+  max-height: 780px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.25));
+}
+
+.ring {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1;
+}
+.ring.gold {
+  stroke: var(--gold);
+  opacity: 0.55;
+}
+.ring.gold.faint {
+  opacity: 0.28;
+}
+.ring.arcane {
+  stroke: var(--arcane-soft);
+  opacity: 0.4;
+}
+
+.net-edge {
+  stroke: var(--gold);
+  stroke-width: 0.5;
+  opacity: 0.12;
+}
+
+.net-node {
+  fill: var(--ember);
+  filter: drop-shadow(0 0 4px rgba(245, 185, 66, 0.8));
+}
+.net-node.arcane-node {
+  fill: var(--arcane-soft);
+}
+.net-core {
+  fill: #fff;
+  filter: drop-shadow(0 0 10px rgba(245, 185, 66, 1));
+}
+
+.summon__spin-slow {
+  transform-origin: 250px 250px;
+  animation: spin 90s linear infinite;
+}
+.summon__spin-rev {
+  transform-origin: 250px 250px;
+  animation: spin 60s linear infinite reverse;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

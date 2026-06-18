@@ -1,0 +1,172 @@
+.edu__degrees {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+.edu__degree {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  border-top: 2px solid var(--gold);
+}
+.edu__level {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--arcane-soft);
+}
+.edu__degree h3 {
+  font-size: 1.1rem;
+  margin: 0.4rem 0;
+  color: var(--gold-soft);
+}
+.edu__inst {
+  color: var(--text);
+  font-size: 0.9rem;
+}
+.edu__years {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  margin: 0.2rem 0 0.6rem;
+}
+.edu__focus {
+  color: var(--text-dim);
+  font-size: 0.86rem;
+}
+
+.edu__theses {
+  display: grid;
+  gap: 1.6rem;
+  margin-bottom: 3rem;
+}
+.edu__thesis {
+  display: grid;
+  grid-template-columns: minmax(260px, 38%) 1fr;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.edu__thesis-img {
+  overflow: hidden;
+  /* White panel that stretches to the full card height, so there is no dark
+     strip below the figure. The figure is shown in full (contain) on white. */
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+}
+.edu__thesis-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.edu__thesis-body {
+  padding: 1.6rem 1.8rem;
+}
+.edu__thesis-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+.edu__tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.edu__grade {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: rgba(124, 58, 237, 0.18);
+  border: 1px solid rgba(124, 58, 237, 0.4);
+  color: var(--arcane-soft);
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+}
+.edu__thesis-body h3 {
+  font-size: 1.35rem;
+  color: var(--gold-soft);
+}
+.edu__subtitle {
+  color: var(--text-dim);
+  font-style: italic;
+  margin: 0.3rem 0 0.9rem;
+  font-size: 0.95rem;
+}
+.edu__summary {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+}
+.edu__repo {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.edu__courses-title {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--gold-soft);
+  margin-bottom: 1.6rem;
+}
+.edu__courses-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+.edu__course-group h5 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.edu__course-group ul {
+  list-style: none;
+}
+.edu__course-group li {
+  color: var(--text-dim);
+  font-size: 0.86rem;
+  padding: 0.3rem 0;
+  position: relative;
+  padding-left: 1rem;
+}
+.edu__course-group li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--arcane-soft);
+  font-size: 0.65rem;
+  top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .edu__degrees,
+  .edu__courses-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .edu__thesis {
+    grid-template-columns: 1fr;
+  }
+  /* When stacked, the panel has no sibling to take its height from, so give
+     it an explicit aspect ratio. */
+  .edu__thesis-img {
+    aspect-ratio: 3 / 2;
+  }
+}
+@media (max-width: 560px) {
+  .edu__degrees,
+  .edu__courses-grid {
+    grid-template-columns: 1fr;
+  }
+}

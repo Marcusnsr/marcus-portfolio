@@ -1,0 +1,179 @@
+:root {
+  /* Dark-fantasy / arcane palette */
+  --bg: #1a1410;
+  --bg-deep: #120d0a;
+  --surface: #241c14;
+  --surface-2: #2c2218;
+  --gold: #d4af37;
+  --gold-soft: #e8c869;
+  --arcane: #7c3aed;
+  --arcane-soft: #a674f0;
+  --ember: #f5b942;
+  --text: #ece3d0;
+  --text-dim: #b6a88f;
+  --text-faint: #7d7363;
+  --line: rgba(212, 175, 55, 0.18);
+
+  --font-display: "Cinzel", "Times New Roman", serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --maxw: 1180px;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Parchment grain + arcane glow ambience */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(900px 600px at 12% -5%, rgba(124, 58, 237, 0.14), transparent 60%),
+    radial-gradient(800px 600px at 100% 10%, rgba(212, 175, 55, 0.1), transparent 55%),
+    radial-gradient(700px 700px at 50% 120%, rgba(124, 58, 237, 0.1), transparent 60%);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+a {
+  color: var(--gold-soft);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--ember);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(4rem, 9vw, 8rem) clamp(1.2rem, 5vw, 3rem);
+}
+
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+/* Hide the system cursor everywhere; CustomCursor takes over (pointer devices). */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.4);
+  color: #fff;
+}
+
+/* No visible scrollbar in any browser. Hiding it (rather than styling it) also
+   prevents the layout shift when the loader unlocks scrolling, since no gutter
+   ever appears or disappears. */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge/IE */
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none; /* Chrome, Safari */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Dice-roll set-pieces (see DiceRoller) ---------- */
+/* Nat 1: the page crumbles, then heals on True Resurrection. The darkening is
+   done with the cheap veil overlay (in DiceRoller.css), NOT a filter on <main>,
+   which would rasterize the whole page every frame. Only transforms/opacity are
+   animated here so the work stays on the GPU compositor. */
+body.is-broken main > *,
+body.is-healing main > * {
+  --r: 1.3deg;
+}
+body.is-broken main > *:nth-child(even),
+body.is-healing main > *:nth-child(even) {
+  --r: -1.5deg;
+}
+body.is-broken main > * {
+  animation: page-collapse 0.7s cubic-bezier(0.5, 0, 0.75, 1) forwards;
+  will-change: transform;
+}
+body.is-healing main > * {
+  animation: page-restore 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+  will-change: transform;
+}
+body.is-broken::before {
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+/* backdrop-filter re-blurs every frame as content moves behind it; switch it
+   off during the crumble/heal so it doesn't thrash. */
+body.is-broken .nav,
+body.is-healing .nav {
+  backdrop-filter: none;
+}
+@keyframes page-collapse {
+  to {
+    transform: translateY(48px) rotate(var(--r));
+  }
+}
+@keyframes page-restore {
+  from {
+    transform: translateY(48px) rotate(var(--r));
+  }
+  to {
+    transform: translateY(0) rotate(0);
+  }
+}
