@@ -30,6 +30,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* stop iOS Safari from inflating text */
 }
 
 body {
@@ -40,15 +41,25 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent; /* no grey flash on tap */
 }
 
-/* Parchment grain + arcane glow ambience */
+/* Parchment grain + arcane glow ambience.
+   Promoted to its own compositor layer (translateZ) and sized with lvh so it
+   neither repaints as content scrolls over it nor jumps when the mobile URL
+   bar shows/hides -- both were causing scroll flicker on phones. */
 body::before {
   content: "";
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100lvh;
   pointer-events: none;
   z-index: 0;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
   background:
     radial-gradient(900px 600px at 12% -5%, rgba(124, 58, 237, 0.14), transparent 60%),
     radial-gradient(800px 600px at 100% 10%, rgba(212, 175, 55, 0.1), transparent 55%),
@@ -81,6 +92,12 @@ section {
   position: relative;
   z-index: 1;
   padding: clamp(4rem, 9vw, 8rem) clamp(1.2rem, 5vw, 3rem);
+}
+
+/* Offset anchor targets so native (mobile, no-Lenis) jumps clear the fixed nav. */
+section[id],
+#top {
+  scroll-margin-top: 80px;
 }
 
 .container {

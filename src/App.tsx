@@ -19,11 +19,20 @@ const skipIntro =
   typeof window !== "undefined" &&
   new URLSearchParams(window.location.search).has("skipintro");
 
-export default function App() {
-  const [loading, setLoading] = useState(!skipIntro);
+// Phones get no loader and no Lenis: the canvas intro is too heavy for mobile
+// GPUs, and Lenis fights native momentum scrolling (a source of scroll jank).
+const isMobile =
+  typeof window !== "undefined" &&
+  (window.matchMedia("(max-width: 760px)").matches ||
+    window.matchMedia("(pointer: coarse)").matches);
 
-  // Smooth, weighted scrolling (skipped when reduced motion is requested).
+export default function App() {
+  const [loading, setLoading] = useState(!skipIntro && !isMobile);
+
+  // Smooth, weighted scrolling (skipped on mobile and when reduced motion is requested;
+  // on those, native scroll + CSS scroll-behavior handle anchor jumps).
   useEffect(() => {
+    if (isMobile) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
     let raf = 0;

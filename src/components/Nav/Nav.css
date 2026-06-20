@@ -48,8 +48,31 @@
   color: var(--gold);
 }
 
+/* Mobile-only Contact CTA (hidden on desktop, where the full link list shows). */
+.nav__cta {
+  display: none;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  border: 1px solid var(--gold);
+  border-radius: 22px;
+  padding: 0.6rem 1.1rem;
+  min-height: 44px;
+}
+
 @media (max-width: 720px) {
   .nav__links {
     display: none;
+  }
+  .nav__cta {
+    display: inline-flex;
+  }
+  /* backdrop-filter is janky on mobile; use a solid translucent bar instead. */
+  .nav.is-scrolled {
+    background: rgba(18, 13, 10, 0.92);
+    backdrop-filter: none;
   }
 }

@@ -34,6 +34,11 @@ export default function Nav() {
           </li>
         ))}
       </ul>
+
+      {/* Mobile gets a single Contact CTA in place of the full link list. */}
+      <a href="#contact" className="nav__cta">
+        Contact
+      </a>
     </nav>
   );
 }

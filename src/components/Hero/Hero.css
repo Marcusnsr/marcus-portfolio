@@ -1,6 +1,7 @@
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 100vh; /* fallback */
+  min-height: 100svh; /* avoids clipping under the mobile browser toolbar */
   display: grid;
   place-items: center;
   text-align: center;
