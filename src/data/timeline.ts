@@ -52,22 +52,22 @@ export const timeline: TimelineItem[] = [
     url: "https://copenhagenlightfestival.org/en-the-building-bubble-programme-2025/",
   },
   {
-    id: "fitng",
-    date: "2026",
-    sortKey: 202601,
-    title: "Poster @ FIT'NG, Panama City",
-    blurb:
-      "Poster presentation at the FIT'NG Annual Conference: a computationally efficient baseline for infant brain-age prediction.",
-    image: "/images/timeline/fitng-poster.webp",
-  },
-  {
     id: "ddsa-grant",
     date: "2026",
-    sortKey: 202602,
+    sortKey: 202601,
     title: "DDSA Travel Grant",
     blurb:
       "Awarded a 15,000 DKK travel grant by the Danish Data Science Academy to present at FIT'NG in Panama City.",
     image: "/images/timeline/ddsa-grant.webp",
+  },
+  {
+    id: "fitng",
+    date: "2026",
+    sortKey: 202602,
+    title: "Poster @ FIT'NG, Panama City",
+    blurb:
+      "Poster presentation at the FIT'NG Annual Conference: a computationally efficient baseline for infant brain-age prediction.",
+    image: "/images/timeline/fitng-poster.webp",
   },
   {
     id: "master-defence",
