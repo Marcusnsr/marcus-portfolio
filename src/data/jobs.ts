@@ -54,4 +54,13 @@ export const jobs: Job[] = [
       "Supporting and guiding first-year students in foundational computer science: assisting exercise classes and assessing coursework throughout the course.",
     logo: "/images/jobs/ucph.png",
   },
+  {
+    id: "diku-ra",
+    company: "DIKU · University of Copenhagen",
+    title: "Research Assistant",
+    period: "Aug 2026 – Present",
+    description:
+      "Developing robust neural network point cloud registration of infant faces during MRI scans to track patient movement throughout the procedure, in collaboration with TrackInnovations. Part of an AI Denmark project.",
+    logo: "/images/jobs/ucph.png",
+  },
 ];
