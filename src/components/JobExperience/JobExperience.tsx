@@ -14,7 +14,10 @@ export default function JobExperience() {
           subtitle="A progression of roles, from my first part-time job to AI research and teaching at the University of Copenhagen."
         />
 
-        <div className="jobs">
+        <div
+          className="jobs"
+          style={{ "--jobs-count": jobs.length } as React.CSSProperties}
+        >
           <div className="jobs__line" aria-hidden />
           {jobs.map((job, i) => (
             <motion.div
